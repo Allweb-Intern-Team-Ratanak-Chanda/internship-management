@@ -17,9 +17,11 @@
             </button>
         </div>
     @endif
-    <a href="/trainer/create_account">
-        <div class="btn btn-success w-100 mb-2">Create a New User</div>
-    </a>
+    @if(Auth::user()->type =='Admin')
+        <a href="/trainer/create_account">
+            <div class="btn btn-success w-100 mb-2">Create a New User</div>
+        </a>
+    @endif
 {{--    Nav tap--}}
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
