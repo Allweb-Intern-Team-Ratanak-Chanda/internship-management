@@ -17,10 +17,11 @@
             </button>
         </div>
     @endif
-    @if(Auth::user()->type =='Admin')
-        <a href="/trainer/create_account">
-            <div class="btn btn-success w-100 mb-2">Create a New User</div>
-        </a>
+    @if(Auth::user()->type == 'Admin')
+    <a href="/trainer/create_account">
+        <div class="btn btn-success w-100 mb-2">Create a New User</div>
+    </a>
+
     @endif
 {{--    Nav tap--}}
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -181,7 +182,7 @@
                             <form onsubmit="return confirm('Are you sure to delete?')" action="/user/delete_trainee" method="post" style="float: left">
                                 @csrf
                                 <input type="hidden" name="txt_id" id="txt_id" value="{{ $trainee->id }}">
-                                <button type="submit" class="delete-modal btn btn-danger">
+                                <button type="submit" class="delete-modal btn btn-danger @if(Auth::user()->type != 'Admin') d-none @endif">
                                     <i class="fas fa-user-minus"></i>
                                 </button>
                             </form>
